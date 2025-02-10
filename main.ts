@@ -19,8 +19,10 @@ Sensors.OnLightDrop(function () {
 });
 
 input.onButtonPressed(Button.AB, function () {
-    radio.sendNumber(0)
-    isRunning = false
+    if(isRunning === false) {
+        radio.sendNumber(0)
+        isRunning = true
+    }
 })
 
 radio.onReceivedNumber(function (receivedNumber: number) {
