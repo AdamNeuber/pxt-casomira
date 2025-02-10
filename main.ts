@@ -1,18 +1,26 @@
+let isRunning = false
+
 radio.setGroup(53)
 basic.pause(100)
 Sensors.SetLightLevel()
 
 input.onButtonPressed(Button.A, function () {
     Sensors.SetLightLevel()
+    isRunning = false
 })
 
 Sensors.OnLightDrop(function () {
-    music.playTone(520, 400)
-    radio.sendNumber(1)
+    if(isRunning === false) {
+        music.playTone(520, 400)
+        radio.sendNumber(1)
+        isRunning = true
+    }
+    
 });
 
 input.onButtonPressed(Button.AB, function () {
     radio.sendNumber(0)
+    isRunning = false
 })
 
 radio.onReceivedNumber(function (receivedNumber: number) {
@@ -21,5 +29,7 @@ radio.onReceivedNumber(function (receivedNumber: number) {
 })
 
 input.onButtonPressed(Button.B, function() {
-    control.reset()
+    basic.clearScreen()
+    Sensors.SetLightLevel()
+    isRunning = false
 })
