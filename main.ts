@@ -1,6 +1,7 @@
 //Start
 
 let isRunning = false
+let runtime = 0
 
 radio.setGroup(53)
 basic.pause(100)
@@ -30,6 +31,7 @@ input.onButtonPressed(Button.AB, function () {
 radio.onReceivedNumber(function (receivedNumber: number) {
     music.playTone(440, 400)
     basic.showNumber(receivedNumber)
+    runtime = receivedNumber
 })
 
 input.onButtonPressed(Button.B, function() {
