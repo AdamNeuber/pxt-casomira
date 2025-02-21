@@ -39,7 +39,3 @@ input.onButtonPressed(Button.B, function() {
     Sensors.SetLightLevel()
     isRunning = false
 })
-
-input.logoIsPressed(); {
-    basic.showNumber(runtime)
-}
